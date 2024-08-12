@@ -1,66 +1,64 @@
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import { ToDo } from "./types/todo-types";
+import {
+  selectAllToDos,
+  selectTodo,
+  cretateToDo,
+  updateToDo,
+  deleteToDo,
+} from "./services/todo-services";
 
 const ToDoList = () => {
   const [todos, setTodos] = useState<ToDo[]>([]);
   const [newTodoTitle, setNewTodoTitle] = useState<string>("");
   const [newTodoDesc, setNewTodoDesc] = useState<string>("");
-  const [isDone, setIsDone] = useState<boolean>(Boolean);
 
   //ALL
+  /**
   useEffect(() => {
     const fetchTodos = async () => {
-      const res = await fetch("http://localhost:5000/todos");
-      const data = await res.json();
+      const data = await selectAllToDos();
       setTodos(data);
     };
     fetchTodos();
   }, []);
+ */
 
-  //ADD
-  const addTodo = async () => {
-    if (newTodoTitle.trim() === "" || newTodoDesc.trim() === "") return;
+  //SELECT WHERE
+  useEffect(() => {
+    const fetchUserToDos = async () => {
+      const data = await selectTodo("user_id", "0");
+      setTodos(data);
+    };
+    fetchUserToDos();
+  }, []);
 
-    const newTodoItem: ToDo = {
-      id: Date.now().toString(),
-      user_id: 1,
+  //ADD TODO
+  const cretateHandler = async () => {
+    if (newTodoTitle === "" && newTodoDesc === "") return;
+
+    const newToDo = await cretateToDo({
       title: newTodoTitle,
       description: newTodoDesc,
       isDone: false,
-    };
-
-    const res = await fetch("http://localhost:5000/todos", {
-      method: "POST",
-      body: JSON.stringify(newTodoItem),
+      user_id: "0",
     });
-    const saveTodo = await res.json();
 
-    setTodos([...todos, saveTodo]);
+    setTodos([...todos, newToDo]);
     setNewTodoTitle("");
     setNewTodoDesc("");
   };
 
-  //UPDATE
-  const doneTodo = async (id: string, isDone: boolean) => {
-    const res = await fetch(`http://localhost:5000/todos/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ isDone: !isDone }),
-    });
-
-    const updatedTodo = await res.json();
-    console.log(updatedTodo);
-
-    setTodos((todos) =>
-      todos.map((todo) => (todo.id === id ? updatedTodo : todo))
-    );
+  //UPDATE TODO
+  const updateHandler = async (todo: ToDo) => {
+    const updatedTodo = await updateToDo(todo.id, { isDone: !todo.isDone });
+    setTodos(todos.map((t) => (t.id === updatedTodo.id ? updatedTodo : t)));
   };
 
   //DELETE
-  const deleteTodo = async (id: string) => {
-    const res = await fetch(`http://localhost:5000/todos/${id}`, {
-      method: "DELETE",
-    });
+  const deleteHandler = async (id: string) => {
+    await deleteToDo(id);
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
@@ -82,7 +80,7 @@ const ToDoList = () => {
           placeholder="Add a new ToDo description"
         />
 
-        <button onClick={addTodo}>
+        <button onClick={() => cretateHandler()}>
           <FaIcons.FaPlusCircle />
         </button>
       </div>
@@ -95,7 +93,7 @@ const ToDoList = () => {
             <div>
               <button
                 className={todo.isDone ? "re" : "done"}
-                onClick={() => doneTodo(todo.id, todo.isDone)}
+                onClick={() => updateHandler(todo)}
               >
                 {todo.isDone ? (
                   <FaIcons.FaRedoAlt />
@@ -103,7 +101,7 @@ const ToDoList = () => {
                   <FaIcons.FaCheckCircle />
                 )}
               </button>
-              <button className="delete" onClick={() => deleteTodo(todo.id)}>
+              <button className="delete" onClick={() => deleteHandler(todo.id)}>
                 <FaIcons.FaTrashAlt />
               </button>
             </div>
