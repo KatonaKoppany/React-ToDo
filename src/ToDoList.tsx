@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
-
-interface ToDo {
-  id: string;
-  title: string;
-  description: string;
-  isDone: boolean;
-}
+import { ToDo } from "./types/todo-types";
 
 const ToDoList = () => {
   const [todos, setTodos] = useState<ToDo[]>([]);
@@ -30,6 +24,7 @@ const ToDoList = () => {
 
     const newTodoItem: ToDo = {
       id: Date.now().toString(),
+      user_id: 1,
       title: newTodoTitle,
       description: newTodoDesc,
       isDone: false,
