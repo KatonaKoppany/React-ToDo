@@ -62,11 +62,11 @@ export const updateToDo = async (
 
 //DELETE
 export const deleteToDo = async (id: string): Promise<void> => {
-  const response = await fetch(`${URL}/${id}`, {
+  const res = await fetch(`${URL}/${id}`, {
     method: "DELETE",
   });
 
-  if (!response.ok) {
+  if (!res.ok) {
     throw new Error("Hiba: DELET");
   }
 };
