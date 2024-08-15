@@ -1,25 +1,39 @@
 {
   "todos": [
     {
-      "id": "25c031ac-411b-41ea-9744-e033cd3227bf",
-      "user_id": "0",
-      "title": "asd",
-      "description": "asd",
-      "isDone": false
+      "id": "26ab2da0-6192-4e81-9fe7-e3a4396c13b0",
+      "title": "qweqwe",
+      "description": "qweqweqw",
+      "isDone": true,
+      "user_id": "1e5b9c9b-0e8a-4c37-8e79-6efb7d9a5eeb"
     },
     {
-      "id": "e8e09a5f-950d-429a-bcb5-9c6f17c738c6",
-      "title": "asdasd",
+      "id": "168eef35-b761-42bd-b8e1-e65c9da0ba13",
+      "title": "qweqwe",
+      "description": "qweqweqweq",
+      "isDone": true,
+      "user_id": "1e5b9c9b-0e8a-4c37-8e79-6efb7d9a5eeb"
+    },
+    {
+      "id": "f7fd1cc7-b0d2-4fd5-8d75-4a6068ac4395",
+      "title": "sadasdas",
       "description": "asdasdasd",
       "isDone": false,
-      "user_id": "0"
+      "user_id": "1e5b9c9b-0e8a-4c37-8e79-6efb7d9a5eed"
+    }
+  ],
+  "users": [
+    {
+      "id": "1e5b9c9b-0e8a-4c37-8e79-6efb7d9a5eeb",
+      "name": "test",
+      "email": "test@test.hu",
+      "password": "test"
     },
     {
-      "id": "2a0b1b7e-c532-41f5-ba37-0ae9445b581e",
-      "title": "asdasdasd",
-      "description": "asdasdsda",
-      "isDone": false,
-      "user_id": "1"
+      "id": "1e5b9c9b-0e8a-4c37-8e79-6efb7d9a5eed",
+      "name": "test",
+      "email": "test2@test.hu",
+      "password": "test"
     }
   ]
 }
