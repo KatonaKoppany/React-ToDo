@@ -1,0 +1,14 @@
+form {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1b1b1b;
+  border-radius: 7px;
+  box-shadow: 5px 5px #161616;
+}
+
+div {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
