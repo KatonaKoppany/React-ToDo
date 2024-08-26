@@ -26,6 +26,10 @@ const Login = () => {
     }
   };
 
+  const navigateToReg = () => {
+    navigate("/register");
+  };
+
   return (
     <form onSubmit={loginHandler}>
       <div>
@@ -50,7 +54,7 @@ const Login = () => {
         Bejelentkezés
       </button>
 
-      <button className="registration" type="submit">
+      <button className="registration" onClick={navigateToReg}>
         Regisztráció
       </button>
     </form>

@@ -4,7 +4,7 @@ import Menu from "../../shared/Menu";
 import { ToDo } from "../../types/todo-types";
 import "./ToDoList.css";
 import {
-  selectAllToDos,
+  //selectAllToDos,
   selectTodo,
   cretateToDo,
   updateToDo,

@@ -1,6 +1,6 @@
 export interface User {
   id: string;
   name: string;
-  emmail: string;
+  email: string;
   password: string;
 }

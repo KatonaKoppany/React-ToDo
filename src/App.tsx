@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import ToDoList from "./pages/todolist/ToDoList";
 import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/todolist" element={<ToDoList />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

@@ -34,6 +34,18 @@
       "name": "test",
       "email": "test2@test.hu",
       "password": "test"
+    },
+    {
+      "id": "26622b24-5052-420d-97dc-ebd73ec45e69",
+      "name": "asdas",
+      "email": "asdasd@asdas.hu",
+      "password": "asd"
+    },
+    {
+      "id": "6d1f291b-3c91-4c1c-8772-8cc8a23f8a5b",
+      "name": "qweqwe",
+      "email": "asdassd@asdas.hu",
+      "password": "asdasd"
     }
   ]
 }

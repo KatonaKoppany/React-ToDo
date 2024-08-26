@@ -41,3 +41,16 @@ export const cretateUser = async (user: Omit<User, "id">): Promise<User> => {
 
   return await res.json();
 };
+
+export const checkEmailExists = async (email: string): Promise<boolean> => {
+  const res = await fetch(`${URL}?email=${encodeURIComponent(email)}`, {
+    method: "GET",
+  });
+
+  if (!res.ok) {
+    throw new Error("Hiba");
+  }
+
+  const users: User[] = await res.json();
+  return users.length > 0;
+};
